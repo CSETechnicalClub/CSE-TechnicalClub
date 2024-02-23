@@ -29,69 +29,60 @@ document.querySelector('form').addEventListener('submit', async function (event)
     }
 });
 
-
 const questions = [
   {
-    question: "Which of the following is NOT a valid Java identifier?",
-    options: ["_variableName", "myVariable123", "123variable", "$variable"],
-    answer: "123variable",
-    selectedOption: null,
+    question: "Which command is used to display the current directory in Linux?",
+    options: ["cd", "pwd", "ls", "dir"],
+    answer: "pwd",
   },
   {
-    question: "What does JVM stand for in Java?",
-    options: ["Java Virtual Machine", "Java Variable Manager", "Java Version Manager", "Java Visual Model"],
-    answer: "Java Virtual Machine",
-    selectedOption: null,
+    question: "What command is used to create a new directory in Linux?",
+    options: ["mkdir", "touch", "cat", "mv"],
+    answer: "mkdir",
   },
   {
-    question: "Which keyword is used to define a class in Java?",
-    options: ["class", "interface", "new", "this"],
-    answer: "class",
-    selectedOption: null,
+    question: "Which command is used to list the contents of a directory in Linux?",
+    options: ["ls", "dir", "list", "show"],
+    answer: "ls",
   },
   {
-    question: "Which of the following is NOT a primitive data type in Java?",
-    options: ["int", "float", "string", "boolean"],
-    answer: "string",
-    selectedOption: null,
+    question: "What does the command 'rm -rf' do in Linux?",
+    options: ["Remove a file", "Remove a directory", "Remove a directory and its contents recursively", "Rename a file"],
+    answer: "Remove a directory and its contents recursively",
   },
   {
-    question: "What is the output of the following code?\n\nint x = 5;\nSystem.out.println(x++);",
-    options: ["5", "6", "Compiles with error", "Runtime error"],
-    answer: "5",
-    selectedOption: null,
+    question: "Which command is used to display the manual pages for other commands in Linux?",
+    options: ["man", "help", "info", "manual"],
+    answer: "man",
   },
   {
-    question: "Which of the following is a valid way to declare an array in Java?",
-    options: ["array[] x;", "int[] x = new int[];", "int x[] = new int[];", "int x[];"],
-    answer: "int[] x = new int[];",
-    selectedOption: null,
+    question: "What command is used to copy files or directories in Linux?",
+    options: ["cp", "mv", "copy", "cp -r"],
+    answer: "cp",
   },
   {
-    question: "Which loop is guaranteed to execute at least once in Java?",
-    options: ["for loop", "while loop", "do-while loop", "foreach loop"],
-    answer: "do-while loop",
-    selectedOption: null,
+    question: "Which command is used to change the permissions of a file or directory in Linux?",
+    options: ["chmod", "chown", "perm", "change"],
+    answer: "chmod",
   },
   {
-    question: "What is the correct way to exit a loop in Java?",
-    options: ["exit", "end", "break", "terminate"],
-    answer: "break",
-    selectedOption: null,
+    question: "What command is used to find files or directories in Linux?",
+    options: ["search", "find", "grep", "locate"],
+    answer: "find",
   },
   {
-    question: "Which keyword is used to define a constant in Java?",
-    options: ["constant", "final", "static", "const"],
-    answer: "final",
-    selectedOption: null,
+    question: "Which command is used to create a symbolic link in Linux?",
+    options: ["ln", "link", "sym", "mklink"],
+    answer: "ln",
   },
   {
-    question: "What is the result of 5 + 7 * 2 in Java?",
-    options: ["14", "24", "19", "None of the above"],
-    answer: "19",
-    selectedOption: null,
-  }
+    question: "What does the command 'grep' do in Linux?",
+    options: ["Find text within files", "Delete files", "Copy files", "Move files"],
+    answer: "Find text within files",
+  },
 ];
+
+
 const quizContainer = document.getElementById('quiz-container');
 
 // Function to display questions and options

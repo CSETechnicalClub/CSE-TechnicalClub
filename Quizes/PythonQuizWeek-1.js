@@ -32,66 +32,68 @@ document.querySelector('form').addEventListener('submit', async function (event)
 
 const questions = [
   {
-    question: "Which of the following is NOT a valid Java identifier?",
-    options: ["_variableName", "myVariable123", "123variable", "$variable"],
-    answer: "123variable",
+    question: "Which of the following is NOT a valid variable name in Python?",
+    options: ["my_var", "myVar", "my-var", "myVar123"],
+    answer: "my-var",
     selectedOption: null,
   },
   {
-    question: "What does JVM stand for in Java?",
-    options: ["Java Virtual Machine", "Java Variable Manager", "Java Version Manager", "Java Visual Model"],
-    answer: "Java Virtual Machine",
+    question: "What is the output of the following code?\n\nprint('3' + 2)",
+    options: ["5", "'32'", "TypeError", "32"],
+    answer: "TypeError",
     selectedOption: null,
   },
   {
-    question: "Which keyword is used to define a class in Java?",
-    options: ["class", "interface", "new", "this"],
-    answer: "class",
+    question: "What does the 'range()' function return in Python?",
+    options: ["A list of integers", "A generator object", "A tuple", "A dictionary"],
+    answer: "A generator object",
     selectedOption: null,
   },
   {
-    question: "Which of the following is NOT a primitive data type in Java?",
-    options: ["int", "float", "string", "boolean"],
-    answer: "string",
+    question: "What is the correct way to declare a list in Python?",
+    options: ["list = {}", "list = []", "list = ()", "list = //"],
+    answer: "list = []",
     selectedOption: null,
   },
   {
-    question: "What is the output of the following code?\n\nint x = 5;\nSystem.out.println(x++);",
-    options: ["5", "6", "Compiles with error", "Runtime error"],
-    answer: "5",
+    question: "What is the result of the expression '3 // 2' in Python?",
+    options: ["1.5", "1", "2", "0.5"],
+    answer: "1",
     selectedOption: null,
   },
   {
-    question: "Which of the following is a valid way to declare an array in Java?",
-    options: ["array[] x;", "int[] x = new int[];", "int x[] = new int[];", "int x[];"],
-    answer: "int[] x = new int[];",
+    question: "Which of the following is NOT a valid data type in Python?",
+    options: ["int", "float", "char", "bool"],
+    answer: "char",
     selectedOption: null,
   },
   {
-    question: "Which loop is guaranteed to execute at least once in Java?",
-    options: ["for loop", "while loop", "do-while loop", "foreach loop"],
-    answer: "do-while loop",
+    question: "What does the 'import random' statement do in Python?",
+    options: ["Imports the 'random' module", "Generates random numbers", "Imports the 'math' module", "Imports the 'datetime' module"],
+    answer: "Imports the 'random' module",
     selectedOption: null,
   },
   {
-    question: "What is the correct way to exit a loop in Java?",
-    options: ["exit", "end", "break", "terminate"],
-    answer: "break",
+    question: "Which of the following is used to comment out multiple lines in Python?",
+    options: ["//", "/* ... */", "#", "''' ... '''"],
+    answer: "''' ... '''",
     selectedOption: null,
   },
   {
-    question: "Which keyword is used to define a constant in Java?",
-    options: ["constant", "final", "static", "const"],
-    answer: "final",
+    question: "What is the correct way to check the length of a list named 'myList' in Python?",
+    options: ["len(myList)", "size(myList)", "length(myList)", "count(myList)"],
+    answer: "len(myList)",
     selectedOption: null,
   },
   {
-    question: "What is the result of 5 + 7 * 2 in Java?",
-    options: ["14", "24", "19", "None of the above"],
-    answer: "19",
+    question: "What is the output of the following code?\n\nx = 'Python'\nprint(x[1:4])",
+    options: ["'Pyt'", "'ytho'", "'yth'", "'ytho'"],
+    answer: "'yth'",
     selectedOption: null,
-  }
+  },
 ];
+
+
 const quizContainer = document.getElementById('quiz-container');
 
 // Function to display questions and options

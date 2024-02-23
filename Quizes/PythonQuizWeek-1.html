@@ -1,26 +1,30 @@
-<!DOCTYPE html>
+
+
+.score-container{
+}<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSE Technical Club</title>
+    <title>Python Quiz | CSE Technical Club</title>
 
     <!-- 
     - custom css link
   -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="quizs.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../quizs.css">
 
     <!-- 
     - google font link
   -->
+    <script src="https://apis.google.com/js/api.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-   </head>
+</head>
 
 <body id="top">
 
@@ -48,30 +52,30 @@
                 <ul class="navbar-list">
 
                     <li class="navbar-item">
-                      <a href="./index.html#home" class="navbar-link" data-nav-toggler>Home</a>
+                        <a href="../index.html#home" class="navbar-link" data-nav-toggler>Home</a>
                     </li>
-          
+
                     <li class="navbar-item">
-                      <a href="./index.html#about" class="navbar-link" data-nav-toggler>About</a>
+                        <a href="../index.html#about" class="navbar-link" data-nav-toggler>About</a>
                     </li>
-          
+
                     <li class="navbar-item">
-                      <a href="./index.html#courses" class="navbar-link" data-nav-toggler>Courses</a>
+                        <a href="../index.html#courses" class="navbar-link" data-nav-toggler>Courses</a>
                     </li>
-          
+
                     <li class="navbar-item">
-                      <a href="./index.html#event" class="navbar-link" data-nav-toggler>Event</a>
+                        <a href="../index.html#event" class="navbar-link" data-nav-toggler>Event</a>
                     </li>
-          
+
                     <li class="navbar-item">
-                      <a href="./index.html#Quizes" class="navbar-link" data-nav-toggler>Quizes</a>
+                        <a href="../index.html#Quizes" class="navbar-link" data-nav-toggler>Quizes</a>
                     </li>
-          
+
                     <li class="navbar-item">
-                      <a href="#footer" class="navbar-link" data-nav-toggler>Contact Us</a>
+                        <a href="#footer" class="navbar-link" data-nav-toggler>Contact Us</a>
                     </li>
-          
-                  </ul>
+
+                </ul>
 
             </nav>
 
@@ -94,14 +98,13 @@
         </div>
     </header>
 
-    <!--Quizes-->
-
 
     <!--
-    -Quize
+    -Quizes
    -->
     <section class="quiz">
-        <form>
+        <h1>Python Quiz Week-1</h1>
+        <form name="Pythonquiz">
             <label for="RollNo">Enter Your Roll Number</label>
             <input type="text" id="rollno" name="rollno" placeholder="Enter RollNo" required>
             <label for="name">Enter Your Full Name</label>
@@ -111,7 +114,7 @@
                 <option value="" disabled selected>Select Branch</option>
                 <option value="CSE">CSE</option>
                 <option value="CSM">CSM</option>
-                <option value="CSD">CSD</option>
+                <option value="CAD">CAD</option>
                 <option value="IOT">IOT</option>
             </select>
             <button type="submit" class="btn btn-primary">
@@ -121,8 +124,89 @@
         </form>
     </section>
 
+    <!--
+        -Score Card
+    -->
+    <div class="score-card" id="score-card" style="display: none;">
+        <h2 id="score">TOTAL SCORE = </h2>
+        <button id="retake-btn">Retake Test</button>
+    </div>
 
+    <!--
+        -Quiz Questions
+    -->
+    <br><br><br><br>
+    <div id="quiz-container" style="display: none; user-select: none;">
+        <h1>Python Basics Quiz</h1>
+      
+    </div>
 
+    <style>
+        #quiz-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .question-container {
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            margin: 0;
+        }
+
+        .options-container {
+            margin: 0;
+        }
+
+        .option-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        /* Style rules for the 'active' state */
+        .option-btn.active {
+            box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+            background-color: #d9ecff;
+        }
+
+        #submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .score-container{
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
     <!-- 
     - #FOOTER
   -->
@@ -243,7 +327,7 @@
                     </li>
 
                     <li>
-                        <a href="#courses" class="footer-link">
+                        <a href="../index.html#courses" class="footer-link">
                             <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
 
                             <span class="span">Popular Courses</span>
@@ -318,25 +402,11 @@
     </a>
 
 
-
-
-
     <!-- 
     - custom js link
-  -->
-    <script src="script.js" defer></script>
-    <script>
-        var rollNoInput = document.getElementById("rollno");
-        // Add an event listener to listen for input changes
-        rollNoInput.addEventListener("input", function() {
-            // Get the entered value
-            var enteredValue = rollNoInput.value;
-            // Convert the value to uppercase
-            var uppercaseValue = enteredValue.toUpperCase();
-            // Set the uppercase value back to the input element
-            rollNoInput.value = uppercaseValue;
-        });
-    </script>
+    -->
+    <script src="PythonQuizWeek-1.js"></script>
+    <script src="../script.js" defer></script>
 
     <!-- 
     - ionicon link

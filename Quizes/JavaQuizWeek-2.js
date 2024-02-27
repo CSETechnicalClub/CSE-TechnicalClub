@@ -201,7 +201,7 @@ window.addEventListener('beforeunload', function (e) {
         });
     });
   
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbx0PBtwV-AGZSA1Ii3cdj6JB73VOoENqeslKz_5EI3124pP4VNdeN3xxeft2EcnzRI3/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyscKH8TxEJqaQ4PVIn2w6ldvaf0mY0GZnUnbBrSAmVYASxGxOdPSBiG11yejIRt3xD/exec';
     const form = document.forms['javaquiz']
     const formData = new FormData(form);
     formData.append('marks', score); // Append marks to the form data

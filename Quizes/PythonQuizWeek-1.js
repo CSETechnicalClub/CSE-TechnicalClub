@@ -161,7 +161,7 @@ function displayScore() {
     resultContainer.className = 'score-container'
     resultContainer.textContent = `Your score: ${score} out of ${questions.length}`;
     quizContainer.appendChild(resultContainer);
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwmQsn96L_pEGIgUvbNltqRjlpKYbhAHbEeev8xHNZ_sUIGSWAjOQ6IRv1pfm81_QVM1w/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxKgv9KH_X8d2ZAR7esFgl5EozoiKzMe3oQdIgWFM1Lq-uAdxvGhgS5IMKcYGeCRa_o/exec';
     const form = document.forms['javaquiz']
     const formData = new FormData(form);
     formData.append('marks', score); // Append marks to the form data

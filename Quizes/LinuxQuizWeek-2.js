@@ -29,70 +29,58 @@ document.querySelector('form').addEventListener('submit', async function (event)
     }
 });
 
-
 const questions = [
   {
-    question: "Which of the following is NOT a valid variable name in Python?",
-    options: ["my_var", "myVar", "my-var", "myVar123"],
-    answer: "my-var",
-    selectedOption: null,
+    question: "Which command is used to shut down a Linux system gracefully?",
+    options: ["shutdown", "reboot", "poweroff", "halt"],
+    answer: "shutdown",
   },
   {
-    question: "What is the output of the following code?\n\nprint('3' + 2)",
-    options: ["5", "'32'", "TypeError", "32"],
-    answer: "TypeError",
-    selectedOption: null,
+    question: "What command is used to move files or directories in Linux?",
+    options: ["mv", "cp", "move", "transfer"],
+    answer: "mv",
   },
   {
-    question: "What does the 'range()' function return in Python?",
-    options: ["A list of integers", "A generator object", "A tuple", "A dictionary"],
-    answer: "A generator object",
-    selectedOption: null,
+    question: "Which command is used to view hidden files in Linux?",
+    options: ["ls -a", "ls --hidden", "hidden", "view"],
+    answer: "ls -a",
   },
   {
-    question: "What is the correct way to declare a list in Python?",
-    options: ["list = {}", "list = []", "list = ()", "list = //"],
-    answer: "list = []",
-    selectedOption: null,
+    question: "What command is used to install software packages in Ubuntu Linux?",
+    options: ["install", "apt-get", "dpkg", "upgrade"],
+    answer: "apt-get",
   },
   {
-    question: "What is the result of the expression '3 // 2' in Python?",
-    options: ["1.5", "1", "2", "0.5"],
-    answer: "1",
-    selectedOption: null,
+    question: "Which command is used to clear the terminal screen in Linux?",
+    options: ["clear", "cls", "clean", "erase"],
+    answer: "clear",
   },
   {
-    question: "Which of the following is NOT a valid data type in Python?",
-    options: ["int", "float", "char", "bool"],
-    answer: "char",
-    selectedOption: null,
+    question: "What command is used to compress files or directories in Linux?",
+    options: ["tar", "compress", "zip", "gzip"],
+    answer: "tar",
   },
   {
-    question: "What does the 'import random' statement do in Python?",
-    options: ["Imports the 'random' module", "Generates random numbers", "Imports the 'math' module", "Imports the 'datetime' module"],
-    answer: "Imports the 'random' module",
-    selectedOption: null,
+    question: "Which command is used to decompress files or directories in Linux?",
+    options: ["gunzip", "ungzip", "decompress", "extract"],
+    answer: "gunzip",
   },
   {
-    question: "Which of the following is used to comment out multiple lines in Python?",
-    options: ["//", "/* ... */", "#", "''' ... '''"],
-    answer: "''' ... '''",
-    selectedOption: null,
+    question: "What command is used to monitor disk space usage in Linux?",
+    options: ["df", "du", "diskusage", "spacecheck"],
+    answer: "df",
   },
   {
-    question: "What is the correct way to check the length of a list named 'myList' in Python?",
-    options: ["len(myList)", "size(myList)", "length(myList)", "count(myList)"],
-    answer: "len(myList)",
-    selectedOption: null,
+    question: "Which command is used to edit configuration files in Linux?",
+    options: ["vi", "edit", "config", "settings"],
+    answer: "vi",
   },
   {
-    question: "What is the output of the following code?\n\nx = 'Python'\nprint(x[1:4])",
-    options: ["'Pyt'", "'ytho'", "'yth'", "'ytho'"],
-    answer: "'yth'",
-    selectedOption: null,
+    question: "What does the command 'top' show in Linux?",
+    options: ["Running processes", "Memory usage", "Disk usage", "Network connections"],
+    answer: "Running processes",
   },
 ];
-
 
 const quizContainer = document.getElementById('quiz-container');
 
@@ -156,50 +144,24 @@ function calculateScore() {
 
 // Function to display score
 function displayScore() {
-  const score = calculateScore();
-  const resultContainer = document.createElement('div');
-  resultContainer.className = 'score-container'
-  resultContainer.textContent = `Your score: ${score} out of ${questions.length}`;
-  quizContainer.appendChild(resultContainer);
-
-  questions.forEach((question, index) => {
-      const questionContainer = document.getElementsByClassName('question-container')[index];
-      const optionBtns = questionContainer.querySelectorAll('.option-btn');
-      optionBtns.forEach(btn => {
-          if (question.selectedOption === question.answer) {
-              if (btn.textContent === question.selectedOption) {
-                  btn.classList.add('correct');
-              }
-          } else {
-              if (btn.textContent === question.selectedOption) {
-                  btn.classList.add('wrong');
-                  const explanationText = document.createElement('p');
-                  explanationText.textContent = `Explanation: ${question.explanation}`;
-                  questionContainer.appendChild(explanationText);
-              }
-              if (btn.textContent === question.answer) {
-                  btn.classList.add('correct');
-              }
-          }
-          // Disable option buttons
-          btn.disabled = true;
-      });
-  });
-
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxjF4ag35Q-_zxrOKN3G5SdbYwYWbXKhA78YEE4mVmByhWxdWGssZr9YvGRrC0hmT87Og/exec';
-  const form = document.forms['Pythonquiz']
-  const formData = new FormData(form);
-  formData.append('marks', score); // Append marks to the form data
-  fetch(scriptURL, {
-      method: 'POST',
-      body: formData
-  })
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message));
-  submitBtn.disabled = true;
-  quizContainer.style.pointerEvents = 'none';
+    const score = calculateScore();
+    const resultContainer = document.createElement('div');
+    resultContainer.className = 'score-container'
+    resultContainer.textContent = `Your score: ${score} out of ${questions.length}`;
+    quizContainer.appendChild(resultContainer);
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwmQsn96L_pEGIgUvbNltqRjlpKYbhAHbEeev8xHNZ_sUIGSWAjOQ6IRv1pfm81_QVM1w/exec';
+    const form = document.forms['javaquiz']
+    const formData = new FormData(form);
+    formData.append('marks', score); // Append marks to the form data
+    fetch(scriptURL, { 
+    method: 'POST', 
+    body: formData 
+    })
+    .then(response => console.log('Success!', response))
+    .catch(error => console.error('Error!', error.message));
+    submitBtn.disabled = true;
+    quizContainer.style.pointerEvents = 'none';
 }
-
 
 // Initialize the quiz
 displayQuestions();

@@ -26,74 +26,86 @@ document.querySelector('form').addEventListener('submit', async function (event)
     } else {
         document.getElementsByClassName('quiz')[0].style.display = 'none';
         document.getElementById('quiz-container').style.display = 'block';
+        window.addEventListener('beforeunload', function (e) {
+          e.preventDefault();
+          e.returnValue = '';
+        });
     }
 });
 
 
 const questions = [
   {
-    question: "Which of the following is NOT a valid variable name in Python?",
-    options: ["my_var", "myVar", "my-var", "myVar123"],
-    answer: "my-var",
-    selectedOption: null,
+      question: "What is the result of 2^3*2+3 mod 5 in arithmetic operations?",
+      options: ["2", "3", "4", "0"],
+      explanation: "First perform the exponent operation, 2^3 equals 8, then multiply by 2 results in 16. Afterwards, adding 3 leads us to 19. Finally divide by 5 and find the remainder gives us 4.",
+      answer: "4",
+      selectedOption: null,
   },
   {
-    question: "What is the output of the following code?\n\nprint('3' + 2)",
-    options: ["5", "'32'", "TypeError", "32"],
-    answer: "TypeError",
-    selectedOption: null,
+      question: "Find the sum of the series: 1 + 2 + 3 + ... + n",
+      options: ["n*(n-1)/2", "n*(n+1)/2", "n^2", "n*(n-1)"],
+      explanation: "This formula calculates the sum of an arithmetic sequence where the common difference is 1, given by S_n = n*(n-1)/2.",
+      answer: "n*(n-1)/2",
+      selectedOption: null,
   },
   {
-    question: "What does the 'range()' function return in Python?",
-    options: ["A list of integers", "A generator object", "A tuple", "A dictionary"],
-    answer: "A generator object",
-    selectedOption: null,
+      question: "Simplify: sqrt(16) + sqrt(81) - sqrt(121)",
+      options: ["10", "-10", "0", "1"],
+      explanation: "Calculate the square roots individually: 4 + 9 - 11 = 13 - 11 = 2.",
+      answer: "2",
+      selectedOption: null,
   },
   {
-    question: "What is the correct way to declare a list in Python?",
-    options: ["list = {}", "list = []", "list = ()", "list = //"],
-    answer: "list = []",
-    selectedOption: null,
+      question: "Factorize: 24x^2y^2 - 36xy^3",
+      options: ["6xy(4x - 6y)", "6x^2y(4y - 6x)", "6xy(4x - 3y)", "6x^2y(4x - 3y)"],
+      explanation: "Extract the common factors: 6xy(4x - 3y).",
+      answer: "6xy(4x - 3y)",
+      selectedOption: null,
   },
   {
-    question: "What is the result of the expression '3 // 2' in Python?",
-    options: ["1.5", "1", "2", "0.5"],
-    answer: "1",
-    selectedOption: null,
+      question: "If log_5(x) = 2, what is the value of x?",
+      options: ["5", "10", "25", "125"],
+      explanation: "Since base 5 raised to power 2 equals x, therefore x = 5^2 = 25.",
+      answer: "25",
+      selectedOption: null,
   },
   {
-    question: "Which of the following is NOT a valid data type in Python?",
-    options: ["int", "float", "char", "bool"],
-    answer: "char",
-    selectedOption: null,
+      question: "Find the area of a circle with radius r = 7 cm.",
+      options: ["14π sq.cm", "49π sq.cm", "28π sq.cm", "50π sq.cm"],
+      explanation: "Area of a circle is given by A = πr², hence A = π × 7² = 49π sq.cm.",
+      answer: "49π sq.cm",
+      selectedOption: null,
   },
   {
-    question: "What does the 'import random' statement do in Python?",
-    options: ["Imports the 'random' module", "Generates random numbers", "Imports the 'math' module", "Imports the 'datetime' module"],
-    answer: "Imports the 'random' module",
-    selectedOption: null,
+      question: "John travels 30 km eastward and then turns north, traveling another 40 km. What is his displacement from the starting position?",
+      options: ["50 km northeast", "50 km northwest", "30 km east, 40 km north", "50 km east"],
+      explanation: "Displacement is calculated as √(east^2 + north^2), thus giving us √(30² + 40²) = 50 km northeast.",
+      answer: "50 km northeast",
+      selectedOption: null,
   },
   {
-    question: "Which of the following is used to comment out multiple lines in Python?",
-    options: ["//", "/* ... */", "#", "''' ... '''"],
-    answer: "''' ... '''",
-    selectedOption: null,
+      question: "There are 10 apples distributed among 5 people equally. How many apples remain uneaten?",
+      options: ["2", "5", "10", "0"],
+      explanation: "Each person receives 10/5 = 2 apples leaving none behind.",
+      answer: "0",
+      selectedOption: null,
   },
   {
-    question: "What is the correct way to check the length of a list named 'myList' in Python?",
-    options: ["len(myList)", "size(myList)", "length(myList)", "count(myList)"],
-    answer: "len(myList)",
-    selectedOption: null,
+      question: "Consider three consecutive odd numbers X, Y, Z such that X < Y < Z. Which of the following expressions correctly relates X, Y, and Z?",
+      options: ["X + Y = Z", "X + Z = Y", "Y + Z = X", "X + Y + Z = 0"],
+      explanation: "Sum of three consecutive odd numbers would equal three times an odd number plus thrice itself, leading to X + Y + Z being divisible by 3.",
+      answer: "X + Y + Z = 0 (modulo 3)",
+      selectedOption: null,
   },
   {
-    question: "What is the output of the following code?\n\nx = 'Python'\nprint(x[1:4])",
-    options: ["'Pyt'", "'ytho'", "'yth'", "'ytho'"],
-    answer: "'yth'",
-    selectedOption: null,
-  },
+      question: "A tank contains water upto half its height. When filled completely, it holds 100 liters. Determine the quantity of water currently present in the tank.",
+      options: ["50 L", "100 L", "25 L", "150 L"],
+      explanation: "Water fills half the tank, so its volume is 50% of total capacity, equaling 50 L.",
+      answer: "50 L",
+      selectedOption: null,
+  }
 ];
-
-
 const quizContainer = document.getElementById('quiz-container');
 
 // Function to display questions and options
@@ -171,12 +183,12 @@ function displayScore() {
                   btn.classList.add('correct');
               }
           } else {
-              if (btn.textContent === question.selectedOption) {
-                  btn.classList.add('wrong');
-                  const explanationText = document.createElement('p');
-                  explanationText.textContent = `Explanation: ${question.explanation}`;
-                  questionContainer.appendChild(explanationText);
-              }
+            if (btn.textContent === question.selectedOption) {
+              btn.classList.add('wrong');
+              const explanationText = document.createElement('p');
+              explanationText.textContent = `Explanation: ${question.explanation}`;
+              questionContainer.appendChild(explanationText);
+          }
               if (btn.textContent === question.answer) {
                   btn.classList.add('correct');
               }
@@ -185,15 +197,16 @@ function displayScore() {
           btn.disabled = true;
       });
   });
+  
 
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxjF4ag35Q-_zxrOKN3G5SdbYwYWbXKhA78YEE4mVmByhWxdWGssZr9YvGRrC0hmT87Og/exec';
-  const form = document.forms['Pythonquiz']
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwmQsn96L_pEGIgUvbNltqRjlpKYbhAHbEeev8xHNZ_sUIGSWAjOQ6IRv1pfm81_QVM1w/exec';
+  const form = document.forms['javaquiz']
   const formData = new FormData(form);
   formData.append('marks', score); // Append marks to the form data
   fetch(scriptURL, {
-      method: 'POST',
-      body: formData
-  })
+          method: 'POST',
+          body: formData
+      })
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message));
   submitBtn.disabled = true;

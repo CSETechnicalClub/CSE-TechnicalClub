@@ -14,7 +14,7 @@ window.addEventListener('beforeunload', function (e) {
   
   // Function to check if Roll Number exists in the list
   async function checkRollNumber(rollNumber) {
-      const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRl2xBjqqa88h3pPYU3vpRWQ8XqxqQEOFtX15ICWLRU3_428l5LvBDtvqiH-COfUJxTYMRt6BstTRsZ/pub?gid=0&single=true&output=csv');
+      const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vSSv4miPzrc151SA8U2znKlVYC55PB6TvxVHs3KtmyIPu9-uv5GERl_EzBHcIp1_gWaX4O7Epg_XFym/pub?gid=0&single=true&output=csv');
       const csvData = await response.text();
       const rows = csvData.split('\n');
       const rollNumbers = rows.map(row => row.split(',')[0]); // Assuming Roll Numbers are in the first column
@@ -201,7 +201,7 @@ window.addEventListener('beforeunload', function (e) {
         });
     });
   
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyscKH8TxEJqaQ4PVIn2w6ldvaf0mY0GZnUnbBrSAmVYASxGxOdPSBiG11yejIRt3xD/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwokSlV_9Xh7uq-rGU52Xy_kC16nwgXQPnNxMDLkrhV4R9A-5BMBoB5DzRMLOEvQMv96g/exec';
     const form = document.forms['javaquiz']
     const formData = new FormData(form);
     formData.append('marks', score); // Append marks to the form data

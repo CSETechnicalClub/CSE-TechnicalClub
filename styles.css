@@ -1,0 +1,48 @@
+@IMPORT <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+p {
+padding: 0;
+margin: 0;
+}
+* {
+box-sizing: border-box;
+}
+body {
+font-family: 'Poor Story', cursive;
+background: #5b9489;
+}
+.container {
+width: 100%;
+height: 100vh;
+}
+.container__items {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+height: 100vh;
+}
+.polaroid {
+margin: 30px;
+width: 400px;
+height: 450px;
+background-color: white;
+padding: 1rem;
+box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
+}
+.polaroid__content-image {
+height: 350px;
+width: 100%;
+overflow: hidden;
+}
+.polaroid__content-image > img {
+height: 100%;
+width: 100%;
+display: block;
+object-fit: cover;
+}
+.polaroid__content-caption {
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 25px;
+}

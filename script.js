@@ -84,3 +84,16 @@ for (let i = 0; i < whishlistBtns.length; i++) {
     toggleElem(this);
   });
 }
+
+function redirectToUrl(id, url) {
+  const element = document.getElementById(id);
+  element.addEventListener('click', () => {
+      window.location.href = url;
+  });
+}
+
+redirectToUrl('BasicsOfGit', 'https://learn.microsoft.com/en-us/training/modules/introduction-to-github-visual-studio-code/?wt.mc_id=studentamb_299348');
+redirectToUrl('MicrosoftPython', 'https://learn.microsoft.com/en-us/training/paths/beginner-python/?wt.mc_id=studentamb_299348');
+redirectToUrl('FunAI', 'https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/?wt.mc_id=studentamb_299348');
+redirectToUrl('WebDev', 'https://learn.microsoft.com/en-us/training/paths/web-development-101/?wt.mc_id=studentamb_299348');
+redirectToUrl('JsNodeJS', 'https://learn.microsoft.com/en-us/training/paths/build-javascript-applications-nodejs/?wt.mc_id=studentamb_299348');

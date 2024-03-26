@@ -1,40 +1,62 @@
-var rollNoInput = document.getElementById("rollno");
-rollNoInput.addEventListener("input", function () {
-    var enteredValue = rollNoInput.value;
-    var uppercaseValue = enteredValue.toUpperCase();
-    rollNoInput.value = uppercaseValue;
-});
+document.addEventListener('DOMContentLoaded', async function () {
 
+    const rollNoInput = document.getElementById("rollno");
 
-// Function to check if Roll Number exists in the list
-async function checkRollNumber(rollNumber) {
-    const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQGbV_1Jqtq1zqGnVCXs98DNEqC1l6LtRmRr1rONTxqeHveooDoWfuHxnfX5FJksbfjKliwqtmzBF74/pub?gid=0&single=true&output=csv');
-    const csvData = await response.text();
-    const rows = csvData.split('\n');
-    const rollNumbers = rows.map(row => row.split(',')[0]); // Assuming Roll Numbers are in the first column
-    return rollNumbers.includes(rollNumber);
-}
+    // Check if rollID exists in local storage
+    const rollID = localStorage.getItem('rollID');
+    if (rollID) {
+        // Set the value of rollNoInput to the rollID from local storage
+        rollNoInput.value = rollID;
+    }
 
-// Event listener for form submission
-document.querySelector('form').addEventListener('submit', async function (event) {
-    window.addEventListener('beforeunload', function (e) {
-        e.preventDefault();
-        e.returnValue = '';
+    // Event listener for input change
+    rollNoInput.addEventListener("input", function () {
+        const enteredValue = rollNoInput.value.toUpperCase();
+        rollNoInput.value = enteredValue;
     });
 
-    event.preventDefault();
-    const rollNumber = document.getElementById('rollno').value;
-    const rollNumberExists = await checkRollNumber(rollNumber);
-    if (rollNumberExists) {
-        alert('Already Submitted. Please wait for the next quiz.');
-        window.location.href = "../Quizes.html";
-    } else {
-        document.getElementsByClassName('quiz')[0].style.display = 'none';
-        document.getElementById('quiz-container').style.display = 'block';
-        window.removeEventListener('beforeunload', preventUnload);
-    }
-});
 
+
+    // Function to fetch user data based on roll number
+    async function fetchUserData(rollNumber) {
+        try {
+            const response = await fetch(`https://db-csetechnicalclub.onrender.com/users?rollno=${rollNumber}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch user data');
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+            alert('Register Now')
+            return null;
+        }
+    }
+
+    // Function to check if the user has already written the test
+    async function checkTestTaken(rollNumber) {
+        const userData = await fetchUserData(rollNumber);
+        if (userData && userData.PythonWeek2) {
+            return true; // Test already taken
+        }
+        return false; // Test not taken
+    }
+
+    // Event listener for form submission
+    document.querySelector('form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const rollNumber = rollNoInput.value;
+        const testTaken = await checkTestTaken(rollNumber);
+
+        if (testTaken) {
+            alert('You have already written the test for Python Week 2.');
+        } else {
+            // Display questions
+            document.getElementsByClassName('quiz')[0].style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            window.removeEventListener('beforeunload', preventUnload);
+        }
+    });
+});
 
 const questions = [
     {
@@ -151,12 +173,13 @@ function selectOption(questionContainer, question, selectedOption) {
 }
 
 // Function to check if all options are selected
-function checkAllOptionsSelected() {
+function
+
+    checkAllOptionsSelected() {
     const allOptionsSelected = questions.every(question => question.selectedOption !== null);
-    if (allOptionsSelected) {
-        submitBtn.disabled = false;
-    }
+    submitBtn.disabled = !allOptionsSelected;
 }
+
 
 // Function to calculate score
 function calculateScore() {
@@ -170,10 +193,10 @@ function calculateScore() {
 }
 
 // Function to display score
-function displayScore() {
+async function displayScore() {
     const score = calculateScore();
     const resultContainer = document.createElement('div');
-    resultContainer.className = 'score-container'
+    resultContainer.className = 'score-container';
     resultContainer.textContent = `Your score: ${score} out of ${questions.length}`;
     quizContainer.appendChild(resultContainer);
 
@@ -201,18 +224,44 @@ function displayScore() {
         });
     });
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxjF4ag35Q-_zxrOKN3G5SdbYwYWbXKhA78YEE4mVmByhWxdWGssZr9YvGRrC0hmT87Og/exec';
-    const form = document.forms['Pythonquiz']
-    const formData = new FormData(form);
-    formData.append('marks', score); // Append marks to the form data
-    fetch(scriptURL, {
-        method: 'POST',
-        body: formData
-    })
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message));
-    submitBtn.disabled = true;
-    quizContainer.style.pointerEvents = 'none';
+    const rollNumber = document.getElementById('rollno').value;
+
+    try {
+        // Fetch user data based on roll number
+        const response = await fetch(`https://db-csetechnicalclub.onrender.com/users?rollno=${rollNumber}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+        }
+        const userData = await response.json();
+
+        // Check if user data is found
+        if (userData.length > 0) {
+            // Update the user's data with the score
+            const updatedUserData = {
+                ...userData[0], // Assuming roll number is unique and fetches single user data
+                PythonWeek2: score
+            };
+
+            // Update the user's data in the database
+            const updateResponse = await fetch(`https://db-csetechnicalclub.onrender.com/users/${updatedUserData.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedUserData),
+            });
+
+            if (!updateResponse.ok) {
+                throw new Error('Failed to update user data');
+            }
+        } else {
+            throw new Error('User not found');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while updating user data.');
+    }
+
 }
 
 
@@ -227,4 +276,3 @@ submitBtn.addEventListener('click', () => {
     displayScore();
 });
 quizContainer.appendChild(submitBtn);
-

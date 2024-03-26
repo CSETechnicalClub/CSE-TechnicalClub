@@ -84,3 +84,24 @@ for (let i = 0; i < whishlistBtns.length; i++) {
     toggleElem(this);
   });
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const loginBtn = document.getElementById('loginBtn');
+  const loginText = document.getElementById('loginText');
+
+  const rollID = localStorage.getItem('rollID');
+  if (rollID) {
+      loginText.textContent = rollID; // Display Roll ID if logged in
+      loginBtn.addEventListener('click', function (event) {
+          event.preventDefault();
+          if (confirm('Are you sure you want to log out?')) {
+              localStorage.removeItem('rollID'); // Remove Roll ID from localStorage
+              window.location.href = '/login/SignIn.html'; // Redirect to logout page
+          }
+      });
+  } else {
+      loginBtn.addEventListener('click', function (event) {
+          // Perform any other action needed for the register/sign-in button
+      });
+  }
+});

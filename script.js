@@ -105,3 +105,33 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 });
+
+/*COURSES */
+
+const BasicsOfGit = getElementById('BasicsOfGit');
+const MicrosoftPython = getElementById('MicrosoftPython');
+const FunAI = getElementById('FunAI');
+const WebDev = getElementById('WebDev');
+const JsNodeJS = getElementById('JsNodeJS');
+
+BasicsOfGit.addEventListener('click', function () {
+  window.location.href = 'https://learn.microsoft.com/en-us/training/paths/get-started-github-and-visual-studio-code/?wt.mc_id=studentamb_299348';
+});
+
+MicrosoftPython.addEventListener('click', function () {
+  window.location.href = 'https://learn.microsoft.com/en-us/training/paths/python-language/?wt.mc_id=studentamb_299348';
+});
+
+FunAI.addEventListener('click', function () {
+  window.location.href = 'https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/?wt.mc_id=studentamb_299348';
+});
+
+WebDev.addEventListener('click', function () {
+  window.location.href = 'https://learn.microsoft.com/en-us/training/paths/web-development-101/?wt.mc_id=studentamb_299348';
+});
+
+JsNodeJS.addEventListener('click', function () {
+  window.location.href = 'https://learn.microsoft.com/en-us/training/paths/build-javascript-applications-nodejs/?wt.mc_id=studentamb_299348';
+});
+
+/*COURSES */  

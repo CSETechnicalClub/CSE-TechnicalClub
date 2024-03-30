@@ -26,18 +26,11 @@ function validateRollID(rollID) {
         return false;
     }
 
-    // Check if the first two digits are 21, 22, 23, or 24
-    if (!['21', '22', '23', '24'].includes(rollID.slice(0, 2))) {
+    if (!['21', '22', '23', '24', '25'].includes(rollID.slice(0, 2))) {
         return false;
     }
 
-    // Check if the next two letters are '4E'
     if (rollID.slice(2, 4) !== '4E') {
-        return false;
-    }
-
-    // Check if the following two characters are either '1A' or '5A'
-    if (!['1A', '5A'].includes(rollID.slice(4, 6))) {
         return false;
     }
 
@@ -51,8 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
 
-        const rollno = form.querySelector('input[type="text"]').value;
-        const password = form.querySelector('input[type="password"]').value;
+        const rollno = document.getElementById('rollno').value;
+        const password = document.getElementById('inpassword').value;
 
         if (!rollno || !password) {
             alert('Fill the Details');
@@ -79,28 +72,33 @@ document.addEventListener('DOMContentLoaded', function () {
                 throw new Error('User data not found');
             }
 
-            const userData = userDataList[0]; // Assuming roll number is unique and fetches single user data
+            const filteredUser = userDataList.find(user => user.id === rollno);
 
-            // Check if userData has the password property
-            if (userData.hasOwnProperty('password') && typeof userData.password === 'string') {
-                // Compare passwords
-                if (userData.password.trim() === password.trim()) {
-                    // Successful sign in
-                    alert('Sign in successful!');
-                    localStorage.setItem('rollID', rollno);
-                    window.location.href = '../index.html';
+            if (filteredUser) {
+                // User found, proceed with password comparison
+                if (filteredUser.hasOwnProperty('password') && typeof filteredUser.password === 'string') {
+                    // Compare passwords
+                    if (filteredUser.password.trim() === password.trim()) {
+                        // Successful sign in
+                        alert('Sign in successful!');
+                        localStorage.setItem('rollID', rollno);
+                        window.location.href = '../index.html';
+                    } else {
+                        // Passwords do not match
+                        alert('Invalid roll number or password.');
+                    }
                 } else {
-                    // Passwords do not match
-                    alert('Invalid roll number or password.');
+                    throw new Error('Invalid user data format');
                 }
             } else {
-                throw new Error('Invalid user data format');
+                // User not found
+                alert('User data not found for the entered roll number.');
             }
-
         } catch (error) {
             console.error('Error:', error);
             alert('An error occurred during sign in. Please try again.');
         }
+
     });
 });
 

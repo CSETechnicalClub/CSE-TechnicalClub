@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         } catch (error) {
             console.error('Error fetching user data:', error);
             alert('Register Now')
+            window.location.href = '../index.html'
             return null;
         }
     }
@@ -173,9 +174,7 @@ function selectOption(questionContainer, question, selectedOption) {
 }
 
 // Function to check if all options are selected
-function
-
-    checkAllOptionsSelected() {
+function checkAllOptionsSelected() {
     const allOptionsSelected = questions.every(question => question.selectedOption !== null);
     submitBtn.disabled = !allOptionsSelected;
 }
@@ -224,47 +223,57 @@ async function displayScore() {
         });
     });
 
-    const rollNumber = document.getElementById('rollno').value;
-
     try {
+        // Get the roll number input value
+        const rollNumber = document.getElementById('rollno').value;
+    
         // Fetch user data based on roll number
-        const response = await fetch(`https://db-csetechnicalclub.onrender.com/users?rollno=${rollNumber}`);
+        const response = await fetch(`https://db-csetechnicalclub.onrender.com/users/${rollNumber}`);
+    
+        // Check if response is successful
         if (!response.ok) {
             throw new Error('Failed to fetch user data');
         }
+    
+        // Parse response data
         const userData = await response.json();
-
-        // Check if user data is found
-        if (userData.length > 0) {
-            // Update the user's data with the score
-            const updatedUserData = {
-                ...userData[0], // Assuming roll number is unique and fetches single user data
-                PythonWeek2: score
-            };
-
+    
+        if (userData) {
+            // Update PythonWeek2 score
+            if (!userData.hasOwnProperty('PythonWeek2')) {
+                userData.PythonWeek2 = score;
+            } else {
+                alert('You have already written the test for Python Week 2.');
+            }
+    
             // Update the user's data in the database
-            const updateResponse = await fetch(`https://db-csetechnicalclub.onrender.com/users/${updatedUserData.id}`, {
+            const updateResponse = await fetch(`https://db-csetechnicalclub.onrender.com/users/${rollNumber}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(updatedUserData),
+                body: JSON.stringify(userData),
             });
-
+    
+            // Check if update was successful
             if (!updateResponse.ok) {
                 throw new Error('Failed to update user data');
+            } else {
+                // Successful update
+                alert('User data updated successfully!');
             }
         } else {
-            throw new Error('User not found');
+            // User not found
+            alert('User data not found for the entered roll number.');
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred while updating user data.');
+        alert('An error occurred while updating user data. Please try again.');
     }
+    
+submitBtn.disabled = true;    
 
 }
-
-
 // Initialize the quiz
 displayQuestions();
 

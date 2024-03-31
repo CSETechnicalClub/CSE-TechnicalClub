@@ -11,7 +11,6 @@
     - custom css link
   -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- 
     - google font link
@@ -20,11 +19,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="images/hero-banner.png">
+  <link rel="preload" as="image" href="images/hero-abs-1.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="images/hero-abs-2.png" media="min-width(768px)">
+
 </head>
 
 <body id="top">
-  <div class="loader"></div>
-  <div class="loader-hidden"></div>
 
   <!-- 
     - #HEADER
@@ -50,31 +54,23 @@
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <a href="#home" class="navbar-link" data-nav-toggler>Home</a>
+            <a href="./index.html#home" class="navbar-link" data-nav-toggler>Home</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#about" class="navbar-link" data-nav-toggler>About</a>
+            <a href="./index.html#about" class="navbar-link" data-nav-toggler>About</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#test" class="navbar-link" data-nav-toggler>Test</a>
+            <a href="./index.html#courses" class="navbar-link" data-nav-toggler>Courses</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#courses" class="navbar-link" data-nav-toggler>Courses</a>
+            <a href="./index.html#event" class="navbar-link" data-nav-toggler>Event</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#event" class="navbar-link" data-nav-toggler>Event</a>
-          </li>
-
-          <li class="navbar-item">
-            <a href="#Quizes" class="navbar-link" data-nav-toggler>Quizes</a>
-          </li>
-
-          <li class="navbar-item" target="_blank">
-            <a href="photo.html" class="navbar-link" data-nav-toggler>Gallery</a>
+            <a href="./index.html#Quizes" class="navbar-link" data-nav-toggler>Quizes</a>
           </li>
 
           <li class="navbar-item">
@@ -87,11 +83,11 @@
 
       <div class="header-actions">
 
-        <a href="/login/SignIn.html" class="header-action-btn login-btn" id="loginBtn">
+        <a href="#" class="header-action-btn login-btn">
           <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-          <span class="span" id="loginText">Register</span>
-        </a>
 
+          <span class="span">Register</span>
+        </a>
 
         <button class="header-action-btn nav-open-btn" aria-label="Open menu" data-nav-toggler>
           <ion-icon name="menu-outline"></ion-icon>
@@ -103,315 +99,6 @@
 
     </div>
   </header>
-
-
-
-  <!-- 
-        - #HERO
-      -->
-
-  <section class="hero" id="home" aria-label="hero" style="background-image: url('/images/hero-bg.jpg')">
-    <div class="container">
-
-      <div class="hero-content">
-
-        <p class="section-subtitle">Better Learning Future With Us</p>
-
-        <h2 class="h1 hero-title">Welcome To SISTK Technical Club</h2>
-
-        <p class="hero-text">
-          We are the CSE Department for CAD,CSM,CSE,CMI.<br>We are here to help you and guide you
-        </p>
-
-        <a href="#test" class="btn btn-primary">
-          <span class="span">Get Started Today</span>
-
-          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-        </a>
-
-      </div>
-
-      <figure class="hero-banner">
-
-        <img src="images/hero-banner.png" width="450" height="500" loading="lazy" alt="hero image" class="w-100">
-
-        <img src="images/hero-abs-1.png" width="318" height="352" loading="lazy" aria-hidden="true"
-          class="abs-img abs-img-1">
-
-        <img src="images/hero-abs-2.png" width="160" height="160" loading="lazy" aria-hidden="true"
-          class="abs-img abs-img-2">
-
-      </figure>
-
-    </div>
-  </section>
-
-
-
-
-
-  <!-- 
-        - #CATEGORY
-      -->
-
-  <section class="section category" id="test" aria-label="category">
-    <div class="container">
-
-      <p class="section-subtitle">Online Test</p>
-
-      <h2 class="h2 section-title">Test Your knowledge</h2>
-
-      <ul class="grid-list">
-
-        <li>
-          <div class="category-card">
-
-            <div class="card-icon">
-              <ion-icon name="logo-python"></ion-icon>
-            </div>
-
-            <div>
-              <h3 class="h3 card-title">
-                <a href="Quizes/PythonQuizWeek-2.html">Python Programming</a>
-              </h3>
-
-              <span class="card-meta">Test</span>
-            </div>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="category-card">
-
-            <div class="card-icon">
-              <ion-icon name="code-outline"></ion-icon>
-            </div>
-
-            <div>
-              <h3 class="h3 card-title">
-                <a href="Quizes/LinuxQuizWeek-1.html">Linux Programming</a>
-              </h3>
-
-              <span class="card-meta">Test</span>
-            </div>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="category-card">
-
-            <div class="card-icon">
-              <i class="fa-brands fa-java"></i>
-            </div>
-
-            <div>
-              <h3 class="h3 card-title">
-                <a href="Quizes/JavaQuizWeek-1.html">Java Programming</a>
-              </h3>
-
-              <span class="card-meta">Test</span>
-            </div>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="category-card">
-
-            <div class="card-icon">
-              <ion-icon name="layers-outline"></ion-icon>
-            </div>
-
-            <div>
-              <h3 class="h3 card-title">
-                <a href="SkillDevelopment/AptitudeQuiz-1.html">Aptitude</a>
-              </h3>
-
-              <span class="card-meta">Test</span>
-            </div>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="category-card">
-
-            <div class="card-icon">
-              <ion-icon name="desktop-outline"></ion-icon>
-            </div>
-
-            <div>
-              <h3 class="h3 card-title">
-                <a href="SkillDevelopment/ReasoningQuiz-1.html">Reasoning</a>
-              </h3>
-
-              <span class="card-meta">Test</span>
-            </div>
-
-          </div>
-        </li>
-
-
-
-        <li>
-          <div class="category-card">
-
-            <div class="card-icon">
-              <ion-icon name="medal-outline"></ion-icon>
-            </div>
-
-            <div>
-              <h3 class="h3 card-title">
-                <a href="#">java lab</a>
-              </h3>
-
-              <span class="card-meta">Test</span>
-            </div>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="category-card">
-
-            <div class="card-icon">
-              <ion-icon name="server-outline"></ion-icon>
-            </div>
-
-            <div>
-              <h3 class="h3 card-title">
-                <a href="#">Data Sciences</a>
-              </h3>
-
-              <span class="card-meta">Test</span>
-            </div>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="category-card">
-
-            <div class="card-icon">
-              <ion-icon name="medkit-outline"></ion-icon>
-            </div>
-
-            <div>
-              <h3 class="h3 card-title">
-                <a href="#">Python Lab</a>
-              </h3>
-
-              <span class="card-meta">Test</span>
-            </div>
-
-          </div>
-        </li>
-
-      </ul>
-
-    </div>
-  </section>
-
-
-
-
-
-  <!-- 
-        - #ABOUT
-      -->
-
-  <section class="section about" id="about" aria-label="about">
-    <div class="container">
-
-      <figure class="about-banner">
-
-        <img src="images/about-banner.jpg" width="450" height="590" loading="lazy" alt="about banner"
-          class="w-100 about-img">
-
-        <img src="images/about-abs-1.jpg" width="188" height="242" loading="lazy" aria-hidden="true"
-          class="abs-img abs-img-1">
-
-
-
-      </figure>
-
-      <div class="about-content">
-
-        <p class="section-subtitle">Who We Are</p>
-
-        <h2 class="h2 section-title">We Offer The Best Carrier</h2>
-
-        <ul class="about-list">
-
-          <li class="about-item">
-
-            <div class="item-icon item-icon-1">
-              <img src="images/about-icon-1.png" width="30" height="30" loading="lazy" aria-hidden="true">
-            </div>
-
-            <div>
-              <h3 class="h3 item-title">Industry Expert Teaching</h3>
-
-              <p class="item-text">
-                At CSE Department, we pride ourselves on our expert teaching. Our dedicated team of educators brings
-                years of experience, passion, and specialized knowledge to every learning opportunity.
-              </p>
-            </div>
-
-          </li>
-
-          <li class="about-item">
-
-            <div class="item-icon item-icon-2">
-              <img src="images/about-icon-2.png" width="30" height="30" loading="lazy" aria-hidden="true">
-            </div>
-
-            <div>
-              <h3 class="h3 item-title">Up-to-Date Course Content</h3>
-
-              <p class="item-text">
-                we are committed to providing up-to-date course content that reflects the latest advancements and
-                industry trends. Our dynamic curriculum is meticulously curated by experts to ensure relevance,
-                accuracy, and practical applicability.
-              </p>
-            </div>
-
-          </li>
-
-          <li class="about-item">
-
-            <div class="item-icon item-icon-3">
-              <img src="images/about-icon-3.png" width="30" height="30" loading="lazy" aria-hidden="true">
-            </div>
-
-            <div>
-              <h3 class="h3 item-title">Biggest Student Community</h3>
-
-              <p class="item-text">
-                In CSE Department we have more than 500+ students studying in our SISTK
-              </p>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <a href="#" class="btn btn-primary">
-          <span class="span">Know About Us</span>
-
-          <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-        </a>
-
-      </div>
-
-    </div>
-  </section>
-
-
-
-
 
   <!-- 
         - #COURSE
@@ -663,175 +350,141 @@
 
           </div>
         </li>
+        <li>
+          <div class="course-card">
+
+            <figure class="card-banner">
+              <img
+              src="https://ouch-cdn2.icons8.com/UZ0Kx3H2KdxGA1_V-S4lE3mc-gFPmN7qXw-Cz2wAucI/rs:fit:368:360/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNjcy/LzBiYjNlY2UwLTcx/NWQtNDMxZC04MmU3/LTlhZmU5YjBjMDkz/Ny5wbmc.png"                width="370" height="270" loading="lazy" alt="Achieving Advanced in Insights with Big" class="img-cover">
+            </figure>
+
+            <div class="card-actions">
+
+              <span class="badge">Basics</span>
+
+              <button class="whishlist-btn" aria-label="Add to whishlist" data-whish-btn>
+                <ion-icon name="heart"></ion-icon>
+              </button>
+
+            </div>
+
+            <div class="card-content">
+
+              <ul class="card-meta-list">
+
+                <li class="card-meta-item">
+                  <ion-icon name="reader-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="card-meta-text">3 Modules</span>
+                </li>
+              </ul>
+
+              <h3 class="h3">
+                <a style="cursor: auto;" class="card-title">Microsoft Azure AI Fundamentals: Generative AI</a>
+              </h3>
+
+
+              <div class="card-footer">
+
+                <div class="card-price">
+                  <span id="FAI" style="cursor: pointer;" class="span">Start Learning</span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </li>
+        <li>
+          <div class="course-card">
+
+            <figure class="card-banner">
+              <img
+              src="./images/AI.svg" width="370" height="270" loading="lazy" alt="Achieving Advanced in Insights with Big" class="img-cover">
+            </figure>
+
+            <div class="card-actions">
+
+              <span class="badge">Basics</span>
+
+              <button class="whishlist-btn" aria-label="Add to whishlist" data-whish-btn>
+                <ion-icon name="heart"></ion-icon>
+              </button>
+
+            </div>
+
+            <div class="card-content">
+
+              <ul class="card-meta-list">
+
+                <li class="card-meta-item">
+                  <ion-icon name="reader-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="card-meta-text">5 Modules</span>
+                </li>
+              </ul>
+
+              <h3 class="h3">
+                <a style="cursor: auto;" class="card-title">Create machine learning models</a>
+              </h3>
+
+
+              <div class="card-footer">
+
+                <div class="card-price">
+                  <span id="ML" style="cursor: pointer;" class="span">Start Learning</span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </li>
       </ul>
 
-      <a href="./Courses.html" class="btn btn-primary">
-        <span id="viewallcourses" class="span">View All Courses</span>
-
-        <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-      </a>
 
     </div>
   </section>
 
 
-
-
-
   <!-- 
-        - #Quizes
+        - #NEWSLETTER
       -->
 
-  <section class="section cta" id="Quizes" style="background-image: url('/images/cta-bg.png')">
+  <section class="section newsletter" aria-label="newsletter"
+    style="background-image: url('/images/newsletter-bg.jpg')">
     <div class="container">
 
-      <figure class="cta-banner">
-        <img src="images/cta-banner.jpg" width="580" height="380" loading="lazy" alt="cta banner" class="img-cover">
-      </figure>
+      <p class="section-subtitle">Subscribe</p>
 
-      <div class="cta-content">
+      <h2 class="h2 section-title">Get Every Latest News</h2>
 
-        <p class="section-subtitle">Online Quizes</p>
+      <form action="" class="newsletter-form">
 
-        <h2 class="h2 section-title">Attend Our Quizes</h2>
+        <div class="input-wrapper">
+          <input type="email" name="email_address" aria-label="email" placeholder="Enter your mail address" required
+            class="email-field">
 
-        <p class="section-text">
-          Quizzes are not just about testing knowledge; they're about igniting curiosity and fostering a lifelong love
-          for learning
-        </p>
+          <ion-icon name="mail-open-outline" aria-hidden="true"></ion-icon>
+        </div>
 
-        <a href="quiz-app.html" class="btn btn-secondary">
-          <span class="span">General Quizes</span>
+        <button type="submit" class="btn btn-primary">
+          <span class="span">Subscribe</span>
 
           <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-        </a>
+        </button>
 
-      </div>
-
-    </div>
-  </section>
-
-
-
-
-
-  <!-- 
-        - #EVENT
-      -->
-
-  <section class="section event" id="event" aria-label="event">
-    <div class="container">
-
-      <p class="section-subtitle">Upcomming Event</p>
-
-      <h2 class="h2 section-title">Let's participate in Events together</h2>
-
-      <ul class="grid-list">
-
-        <li>
-          <div class="event-card">
-
-            <figure class="card-banner">
-              <img src="images/event-1.jpg" width="370" height="250" loading="lazy"
-                alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
-            </figure>
-            <time class="badge" datetime="2024-03-01">23 March 2024</time>
-            <div class="card-content">
-
-              <address class="card-address">
-                <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
-
-                <span class="span">SVUCE , Tirupati</span>
-              </address>
-
-              <h3 class="h3">
-                <a href="#" class="card-title">Cynosure 2024 </a>
-              </h3>
-
-              <a href="https://cynosure2k24.live/" class="btn-link">
-                <span class="span">Register Here</span>
-
-                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-              </a>
-
-            </div>
-
-          </div>
-        </li>
-
-        <li>
-
-          <div class="event-card">
-
-            <figure class="card-banner">
-              <img src="images/event-2.jpg" width="370" height="250" loading="lazy"
-                alt="Virtual Spring Part-time Jobs Fair for Student" class="img-cover">
-            </figure>
-
-            <time class="badge" datetime="2024-02-29">5&6th Apr 2024</time>
-
-            <div class="card-content">
-
-              <address class="card-address">
-                <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
-
-                <span class="span">SPMVV , Tirupati</span>
-              </address>
-
-              <h3 class="h3">
-                <a href="#" class="card-title">Virinchi 2024</a>
-              </h3>
-
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLScgSt53LBvb3oI7T25uOphCGk-2aF0LBO62JDmlxeeKcNFCPg/viewform?pli=1"
-                class="btn-link">
-                <span class="span">Register Here</span>
-
-                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-              </a>
-
-            </div>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="event-card">
-
-            <figure class="card-banner">
-              <img src="images/event-3.jpg" width="370" height="250" loading="lazy"
-                alt="Explorations of Regional Chief Executive Network" class="img-cover">
-            </figure>
-
-            <time class="badge" datetime="2024-02-24">6th Apr 2024</time>
-
-            <div class="card-content">
-
-              <address class="card-address">
-                <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
-
-                <span class="span">MITS , Madanapalle</span>
-              </address>
-
-              <h3 class="h3">
-                <a href="#" class="card-title">Invicta 2024</a>
-              </h3>
-
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfe3gs12BV86sCSH6ceAtfmdiOKcDFksM3f-v37kqI5fy48Zw/viewform"
-                class="btn-link">
-                <span class="span">Register Here</span>
-
-                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-              </a>
-
-            </div>
-
-          </div>
-        </li>
-
-      </ul>
+      </form>
 
     </div>
   </section>
+
+  </article>
+  </main>
+
+
 
 
 
@@ -855,20 +508,19 @@
           <ul class="social-list">
 
             <li>
-              <a href="https://whatsapp.com/channel/0029VaRJxkx9xVJjBcx4C82n" class="social-link" target="_blank">
+              <a href="#" class="social-link">
                 <ion-icon name="logo-whatsapp"></ion-icon>
               </a>
             </li>
 
             <li>
-              <a href="https://www.instagram.com/techwizards2k24" class="social-link" target="_blank">
+              <a href="#" class="social-link">
                 <ion-icon name="logo-instagram"></ion-icon>
               </a>
             </li>
 
             <li>
-              <a href="https://www.linkedin.com/school/siddartha-institute-of-science-technology-puttur/"
-                class="social-link" target="_blank">
+              <a href="#" class="social-link">
                 <ion-icon name="logo-linkedin"></ion-icon>
               </a>
             </li>
@@ -988,15 +640,15 @@
           </li>
 
           <li class="footer-item">
-            <!-- <ion-icon name="call" aria-hidden="true"></ion-icon> !-->
+            <ion-icon name="call" aria-hidden="true"></ion-icon>
 
-            <a href="tel:+91 9121952232" class="footer-link"></a>
+            <a href="tel:+91 9121952232" class="footer-link">+91 9121952232</a>
           </li>
 
           <li class="footer-item">
-            <!--<ion-icon name="call" aria-hidden="true"></ion-icon> !-->
+            <ion-icon name="call" aria-hidden="true"></ion-icon>
 
-            <a href="tel:+91 8867549105" class="footer-link"></a>
+            <a href="tel:+91 8867549105" class="footer-link">+91 8867549105</a>
           </li>
 
           <li class="footer-item">

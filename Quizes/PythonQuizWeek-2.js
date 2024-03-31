@@ -257,10 +257,10 @@ async function displayScore() {
     
             // Check if update was successful
             if (!updateResponse.ok) {
-                throw new Error('Failed to update user data');
+                throw new Error('Failed to Store the Result');
             } else {
                 // Successful update
-                alert('User data updated successfully!');
+                alert('Result Stored successfully!');
             }
         } else {
             // User not found

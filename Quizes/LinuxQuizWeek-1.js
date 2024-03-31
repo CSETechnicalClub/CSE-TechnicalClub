@@ -1,32 +1,62 @@
-var rollNoInput = document.getElementById("rollno");
-rollNoInput.addEventListener("input", function () {
-    var enteredValue = rollNoInput.value;
-    var uppercaseValue = enteredValue.toUpperCase();
-    rollNoInput.value = uppercaseValue;
-});
+document.addEventListener('DOMContentLoaded', async function () {
+
+  const rollNoInput = document.getElementById("rollno");
+
+  // Check if rollID exists in local storage
+  const rollID = localStorage.getItem('rollID');
+  if (rollID) {
+      // Set the value of rollNoInput to the rollID from local storage
+      rollNoInput.value = rollID;
+  }
+
+  // Event listener for input change
+  rollNoInput.addEventListener("input", function () {
+      const enteredValue = rollNoInput.value.toUpperCase();
+      rollNoInput.value = enteredValue;
+  });
 
 
-// Function to check if Roll Number exists in the list
-async function checkRollNumber(rollNumber) {
-    const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vSrBVT_PlpCXrnaCEv7INMYoxls4c_yMcO6QMgdO3DU3agum-E6E7ekpUOPdnEmB6Y6ZTqpi3Qi1-St/pub?output=csv');
-    const csvData = await response.text();
-    const rows = csvData.split('\n');
-    const rollNumbers = rows.map(row => row.split(',')[0]); // Assuming Roll Numbers are in the first column
-    return rollNumbers.includes(rollNumber);
-}
 
-// Event listener for form submission
-document.querySelector('form').addEventListener('submit', async function (event) {
-    event.preventDefault();
-    const rollNumber = document.getElementById('rollno').value;
-    const rollNumberExists = await checkRollNumber(rollNumber);
-    if (rollNumberExists) {
-        alert('Already Submitted. Please wait for the next quiz.');
-        window.location.href = "../Quizes.html";
-    } else {
-        document.getElementsByClassName('quiz')[0].style.display = 'none';
-        document.getElementById('quiz-container').style.display = 'block';
-    }
+  // Function to fetch user data based on roll number
+  async function fetchUserData(rollNumber) {
+      try {
+          const response = await fetch(`https://db-csetechnicalclub.onrender.com/users?rollno=${rollNumber}`);
+          if (!response.ok) {
+              throw new Error('Failed to fetch user data');
+          }
+          return await response.json();
+      } catch (error) {
+          console.error('Error fetching user data:', error);
+          alert('Register Now')
+          window.location.href = '../index.html'
+          return null;
+      }
+  }
+
+  // Function to check if the user has already written the test
+  async function checkTestTaken(rollNumber) {
+      const userData = await fetchUserData(rollNumber);
+      if (userData && userData.LinuxWeek1) {
+          return true; // Test already taken
+      }
+      return false; // Test not taken
+  }
+
+  // Event listener for form submission
+  document.querySelector('form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const rollNumber = rollNoInput.value;
+      const testTaken = await checkTestTaken(rollNumber);
+
+      if (testTaken) {
+          alert('You have already written the test for Linux Week 2.');
+      } else {
+          // Display questions
+          document.getElementsByClassName('quiz')[0].style.display = 'none';
+          document.getElementById('quiz-container').style.display = 'block';
+          window.removeEventListener('beforeunload', preventUnload);
+      }
+  });
 });
 
 const questions = [
@@ -127,10 +157,9 @@ function selectOption(questionContainer, question, selectedOption) {
 // Function to check if all options are selected
 function checkAllOptionsSelected() {
     const allOptionsSelected = questions.every(question => question.selectedOption !== null);
-    if (allOptionsSelected) {
-        submitBtn.disabled = false;
-    }
+    submitBtn.disabled = !allOptionsSelected;
 }
+
 
 // Function to calculate score
 function calculateScore() {
@@ -144,26 +173,88 @@ function calculateScore() {
 }
 
 // Function to display score
-function displayScore() {
+async function displayScore() {
     const score = calculateScore();
     const resultContainer = document.createElement('div');
-    resultContainer.className = 'score-container'
+    resultContainer.className = 'score-container';
     resultContainer.textContent = `Your score: ${score} out of ${questions.length}`;
     quizContainer.appendChild(resultContainer);
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwmQsn96L_pEGIgUvbNltqRjlpKYbhAHbEeev8xHNZ_sUIGSWAjOQ6IRv1pfm81_QVM1w/exec';
-    const form = document.forms['javaquiz']
-    const formData = new FormData(form);
-    formData.append('marks', score); // Append marks to the form data
-    fetch(scriptURL, { 
-    method: 'POST', 
-    body: formData 
-    })
-    .then(response => console.log('Success!', response))
-    .catch(error => console.error('Error!', error.message));
-    submitBtn.disabled = true;
-    quizContainer.style.pointerEvents = 'none';
-}
 
+    questions.forEach((question, index) => {
+        const questionContainer = document.getElementsByClassName('question-container')[index];
+        const optionBtns = questionContainer.querySelectorAll('.option-btn');
+        optionBtns.forEach(btn => {
+            if (question.selectedOption === question.answer) {
+                if (btn.textContent === question.selectedOption) {
+                    btn.classList.add('correct');
+                }
+            } else {
+                if (btn.textContent === question.selectedOption) {
+                    btn.classList.add('wrong');
+                    const explanationText = document.createElement('p');
+                    explanationText.textContent = `Explanation: ${question.explanation}`;
+                    questionContainer.appendChild(explanationText);
+                }
+                if (btn.textContent === question.answer) {
+                    btn.classList.add('correct');
+                }
+            }
+            // Disable option buttons
+            btn.disabled = true;
+        });
+    });
+
+    try {
+        // Get the roll number input value
+        const rollNumber = document.getElementById('rollno').value;
+    
+        // Fetch user data based on roll number
+        const response = await fetch(`https://db-csetechnicalclub.onrender.com/users/${rollNumber}`);
+    
+        // Check if response is successful
+        if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+        }
+    
+        // Parse response data
+        const userData = await response.json();
+    
+        if (userData) {
+            // Update LinuxWeek1 score
+            if (!userData.hasOwnProperty('LinuxWeek1')) {
+                userData.LinuxWeek1 = score;
+            } else {
+                alert('You have already written the test for Linux Week 1.');
+            }
+    
+            // Update the user's data in the database
+            const updateResponse = await fetch(`https://db-csetechnicalclub.onrender.com/users/${rollNumber}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            });
+    
+            // Check if update was successful
+            if (!updateResponse.ok) {
+                throw new Error('Failed to Store the Result');
+            } else {
+                // Successful update
+                alert('Result Stored successfully!');
+            }
+        } else {
+            // User not found
+            alert('User data not found for the entered roll number.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while updating user data. Please try again.');
+    }
+    
+submitBtn.disabled = true;    
+
+}
 // Initialize the quiz
 displayQuestions();
 

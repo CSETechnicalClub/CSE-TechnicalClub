@@ -1,10 +1,10 @@
 
-window.addEventListener("load", () =>{
-  const loader =document.querySelector(".loader");
+window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader");
 
   loader.classList.add("loader-hidden");
 
-  loader .addEventListener("transitionend", () => {
+  loader.addEventListener("transitionend", () => {
     document.body.removeChild("loader");
   })
 })
@@ -91,47 +91,57 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const rollID = localStorage.getItem('rollID');
   if (rollID) {
-      loginText.textContent = rollID; // Display Roll ID if logged in
-      loginBtn.addEventListener('click', function (event) {
-          event.preventDefault();
-          if (confirm('Are you sure you want to log out?')) {
-              localStorage.removeItem('rollID'); // Remove Roll ID from localStorage
-              window.location.href = '/login/SignIn.html'; // Redirect to logout page
-          }
-      });
+    loginText.textContent = rollID; // Display Roll ID if logged in
+    loginBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      if (confirm('Are you sure you want to log out?')) {
+        localStorage.removeItem('rollID'); // Remove Roll ID from localStorage
+        window.location.href = '/login/SignIn.html'; // Redirect to logout page
+      }
+    });
   } else {
-      loginBtn.addEventListener('click', function (event) {
-          // Perform any other action needed for the register/sign-in button
-      });
+    loginBtn.addEventListener('click', function (event) {
+      // Perform any other action needed for the register/sign-in button
+    });
   }
 });
 
 /*COURSES */
 
-const BasicsOfGit = getElementById('BasicsOfGit');
-const MicrosoftPython = getElementById('MicrosoftPython');
-const FunAI = getElementById('FunAI');
-const WebDev = getElementById('WebDev');
-const JsNodeJS = getElementById('JsNodeJS');
+const BasicsOfGit = document.getElementById('BasicsOfGit');
+const MicrosoftPython = document.getElementById('MicrosoftPython');
+const FunAI = document.getElementById('FunAI');
+const WebDev = document.getElementById('WebDev');
+const JsNodeJS = document.getElementById('JsNodeJS');
+const FAI = document.getElementById('FAI');
+const ML = document.getElementById('ML');
+
+ML.addEventListener('click', function () {
+  window.open('https://learn.microsoft.com/en-us/training/paths/create-machine-learn-models/?wt.mc_id=studentamb_299348', '_blank');
+});
+
+FAI.addEventListener('click', function () {
+  window.open('https://learn.microsoft.com/en-us/training/paths/introduction-generative-ai/?wt.mc_id=studentamb_299348', '_blank');
+});
 
 BasicsOfGit.addEventListener('click', function () {
-  window.location.href = 'https://learn.microsoft.com/en-us/training/paths/get-started-github-and-visual-studio-code/?wt.mc_id=studentamb_299348';
+  window.open('https://learn.microsoft.com/en-us/training/paths/get-started-github-and-visual-studio-code/?wt.mc_id=studentamb_299348', '_blank');
 });
 
 MicrosoftPython.addEventListener('click', function () {
-  window.location.href = 'https://learn.microsoft.com/en-us/training/paths/python-language/?wt.mc_id=studentamb_299348';
+  window.open('https://learn.microsoft.com/en-us/training/paths/python-language/?wt.mc_id=studentamb_299348', '_blank');
 });
 
 FunAI.addEventListener('click', function () {
-  window.location.href = 'https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/?wt.mc_id=studentamb_299348';
+  window.open('https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/?wt.mc_id=studentamb_299348', '_blank');
 });
 
 WebDev.addEventListener('click', function () {
-  window.location.href = 'https://learn.microsoft.com/en-us/training/paths/web-development-101/?wt.mc_id=studentamb_299348';
+  window.open('https://learn.microsoft.com/en-us/training/paths/web-development-101/?wt.mc_id=studentamb_299348', '_blank');
 });
 
 JsNodeJS.addEventListener('click', function () {
-  window.location.href = 'https://learn.microsoft.com/en-us/training/paths/build-javascript-applications-nodejs/?wt.mc_id=studentamb_299348';
+  window.open('https://learn.microsoft.com/en-us/training/paths/build-javascript-applications-nodejs/?wt.mc_id=studentamb_299348', '_blank');
 });
 
-/*COURSES */  
+/*COURSES */

@@ -465,7 +465,8 @@
               <div class="card-footer">
 
                 <div class="card-price">
-                  <span id="BasicsOfGit" style="cursor: pointer;" class="span">Start Learning</span>
+                  <span id="BasicsOfGit" style="cursor: pointer;" class="span">Start
+                    Learning</span>
                 </div>
               </div>
 
@@ -1038,7 +1039,30 @@
     - custom js link
   -->
   <script src="script.js" defer></script>
-
+  <script>
+    const openURL = url => window.open(url, "_blank");
+  
+    const courseLinks = {
+      'BasicsOfGit': 'https://learn.microsoft.com/en-us/training/paths/get-started-github-and-visual-studio-code/?wt.mc_id=studentamb_299348',
+      'MicrosoftPython': 'https://learn.microsoft.com/en-us/training/paths/python-language/?wt.mc_id=studentamb_299348',
+      'FunAI': 'https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/?wt.mc_id=studentamb_299348',
+      'WebDev': 'https://learn.microsoft.com/en-us/training/paths/web-development-101/?wt.mc_id=studentamb_299348',
+      'JsNodeJS': 'https://learn.microsoft.com/en-us/training/paths/build-javascript-applications-nodejs/?wt.mc_id=studentamb_299348',
+      'FAI': 'https://learn.microsoft.com/en-us/training/paths/introduction-generative-ai/?wt.mc_id=studentamb_299348',
+      'ML': 'https://learn.microsoft.com/en-us/training/paths/create-machine-learn-models/?wt.mc_id=studentamb_299348'
+    };
+  
+    Object.values(courseLinks).forEach(url => {
+      const divElement = document.createElement('div');
+      divElement.setAttribute('id', 'externalLink');
+      divElement.innerHTML = '<a href=' + url + '>' + url + '</a>';
+      document.body.appendChild(divElement);
+    });
+  
+    Array.from(document.querySelectorAll('#BasicsOfGit, #MicrosoftPython, #FunAI, #WebDev, #JsNodeJS, #FAI, #ML')).forEach(element => {
+      element.addEventListener('click', () => openURL(courseLinks[element.id]));
+    });
+  </script>
   <!-- 
     - ionicon link
   -->

@@ -109,6 +109,9 @@
   border-radius: 50%;
   animation: loading 0.75s ease infinite;
 }
+html{
+  scroll-behavior: smooth;
+}
 @keyframes loading {
   from{
     transform: rotate(0turn);

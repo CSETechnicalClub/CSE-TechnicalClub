@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Function to fetch user data based on roll number
     async function fetchUserData(rollNumber) {
         try {
-            const response = await fetch(`https://db-csetechnicalclub.onrender.com/users?rollno=${rollNumber}`);
+            const response = await fetch(`https://sistk-technical-club-db-1.onrender.com/api/students?rollno=${rollNumber}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch user data');
             }
@@ -228,7 +228,7 @@ async function displayScore() {
         const rollNumber = document.getElementById('rollno').value;
     
         // Fetch user data based on roll number
-        const response = await fetch(`https://db-csetechnicalclub.onrender.com/users/${rollNumber}`);
+        const response = await fetch(`https://sistk-technical-club-db-1.onrender.com/api/students/${rollNumber}`);
     
         // Check if response is successful
         if (!response.ok) {
@@ -247,7 +247,7 @@ async function displayScore() {
             }
     
             // Update the user's data in the database
-            const updateResponse = await fetch(`https://db-csetechnicalclub.onrender.com/users/${rollNumber}`, {
+            const updateResponse = await fetch(`https://sistk-technical-club-db-1.onrender.com/api/students/${rollNumber}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

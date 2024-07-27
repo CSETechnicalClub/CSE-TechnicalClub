@@ -1,29 +1,40 @@
-
-
-.score-container{
-}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Quiz | CSE Technical Club</title>
+    <title>CSE Technical Club</title>
 
     <!-- 
     - custom css link
   -->
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../quizs.css">
 
     <!-- 
     - google font link
   -->
-    <script src="https://apis.google.com/js/api.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <!-- 
+    - preload images
+  -->
+    <link rel="preload" as="image" href="images/hero-banner.png">
+    <link rel="preload" as="image" href="images/hero-abs-1.png" media="min-width(768px)">
+    <link rel="preload" as="image" href="images/hero-abs-2.png" media="min-width(768px)">
+
+    <!-- 
+    - #SEO
+  -->
+    <meta name="title" content="Python Quiz | week-1">
+    <meta name="description" content="Take the Python Quiz and test your knowledge in Python programming. Challenge yourself with a series of questions and see how well you know Python.">
+    <meta name="keywords" content="Python Quiz, Python Test, Python Programming, Python Questions, Python Knowledge">
+    <meta name="author" content="CSE Technical Club">
+
 </head>
 
 <body id="top">
@@ -97,116 +108,38 @@
 
         </div>
     </header>
+    <!-- 
+        - #NEWSLETTER
+      -->
 
-
-    <!--
-    -Quizes
-   -->
-    <section class="quiz">
-        <h1>Python Quiz Week-1</h1>
-        <form name="Pythonquiz">
-            <label for="RollNo">Enter Your Roll Number</label>
-            <input type="text" id="rollno" name="rollno" placeholder="Enter RollNo" required>
-            <label for="name">Enter Your Full Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter Name" required>
-            <label for="branch">Select Your Branch</label>
-            <select id="branch" name="branch" required>
-                <option value="" disabled selected>Select Branch</option>
-                <option value="CSE">CSE</option>
-                <option value="CSM">CSM</option>
-                <option value="CAD">CAD</option>
-                <option value="IOT">IOT</option>
-            </select>
-            <button type="submit" class="btn btn-primary">
-                <span class="span">Next</span>
-                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-            </button>
-        </form>
+    <section class="section newsletter" aria-label="newsletter"
+        >
+        <div class="container">
+            <h2 class="h2 section-title">Python Test</h2>
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdALYSCIVTEM7ZdFJBW6aZ6nArnmyHgpf_YYHHNW2sIy4bqXA/viewform?usp=sf_link" width="100vh" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
     </section>
-
-    <!--
-        -Score Card
-    -->
-    <div class="score-card" id="score-card" style="display: none;">
-        <h2 id="score">TOTAL SCORE = </h2>
-        <button id="retake-btn">Retake Test</button>
-    </div>
-
-    <!--
-        -Quiz Questions
-    -->
-    <br><br><br><br>
-    <div id="quiz-container" style="display: none; user-select: none;">
-        <h1>Python Basics Quiz</h1>
-      
-    </div>
-
     <style>
-        #quiz-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .question-container {
-            margin-bottom: 20px;
-        }
-
-        .question-text {
-            margin: 0;
-        }
-
-        .options-container {
-            margin: 0;
-        }
-
-        .option-btn {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 5px 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            cursor: pointer;
-        }
-
-        /* Style rules for the 'active' state */
-        .option-btn.active {
-            box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
-            background-color: #d9ecff;
-        }
-
-        #submit-btn {
-            display: block;
+        iframe {
             width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
+            height: 1000px;
+            overflow: hidden;
         }
 
-        #submit-btn:hover {
-            background-color: #0056b3;
-        }
-
-        .score-container{
-            text-align: center;
-            margin-top: 20px;
+        @media screen and (max-width: 768px) {
+            iframe {
+                width: 100%;
+            }
         }
     </style>
+
+    </article>
+    </main>
+
+
+
+
+
     <!-- 
     - #FOOTER
   -->
@@ -327,7 +260,7 @@
                     </li>
 
                     <li>
-                        <a href="../index.html#courses" class="footer-link">
+                        <a href="#courses" class="footer-link">
                             <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
 
                             <span class="span">Popular Courses</span>
@@ -402,10 +335,12 @@
     </a>
 
 
+
+
+
     <!-- 
     - custom js link
-    -->
-    <script src="PythonQuizWeek-1.js"></script>
+  -->
     <script src="../script.js" defer></script>
 
     <!-- 

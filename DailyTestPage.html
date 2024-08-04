@@ -5,39 +5,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICS TEST | CSE Technical Club</title>
-
-    <!-- 
-    - custom css link
-  -->
+    <title>Daily Test | CSE Technical Club</title>
+    
+    <!-- Custom CSS link -->
     <link rel="stylesheet" href="../style.css">
-
-    <!-- 
-    - google font link
-  -->
+    
+    <!-- Google Fonts link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- 
-    - preload images
-  -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Preload images -->
     <link rel="preload" as="image" href="images/hero-banner.png">
-    <link rel="preload" as="image" href="images/hero-abs-1.png" media="min-width(768px)">
-    <link rel="preload" as="image" href="images/hero-abs-2.png" media="min-width(768px)">
-
-    <!-- 
-    - #SEO
-  -->
-    <meta name="description" content="CSE Technical Club SE Test">
-    <meta name="keywords" content="CSE, Technical Club, ICS Test, Software Engineering Test, SISTK">
+    <link rel="preload" as="image" href="images/hero-abs-1.png" media="(min-width:768px)">
+    <link rel="preload" as="image" href="images/hero-abs-2.png" media="(min-width:768px)">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Participate in daily tests and quizzes at CSE Technical Club. Improve your software engineering skills with regular assessments.">
+    <meta name="keywords" content="CSE, Technical Club, Daily Test, Software Engineering, Quizzes, SISTK, student assessments, technical skills">
     <meta name="author" content="CSE Technical Club">
-
-    <!-- 
-    - #ICON
-  -->
-    <link rel="icon" href="../images/sistk-logo.png" type="image/x-icon">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Daily Test | CSE Technical Club">
+    <meta property="og:description" content="Join CSE Technical Club for daily tests and quizzes to enhance your software engineering skills.">
+    <meta property="og:image" content="https://sistktechnical.club/images/sistk-logo.png">
+    <meta property="og:url" content="https://sistktechnical.club/DailyTestPage.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Daily Test | CSE Technical Club">
+    <meta name="twitter:description" content="Participate in daily tests and quizzes at CSE Technical Club. Enhance your software engineering skills with regular assessments.">
+    <meta name="twitter:image" content="https://sistktechnical.club/images/sistk-logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://sistktechnical.club/images/sistk-logo.png" type="image/x-icon">
+    
+    <!-- Structured Data for Rich Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "CSE Technical Club",
+      "url": "https://sistktechnical.club/DailyTestPage.html",
+      "description": "The CSE Technical Club offers daily tests and quizzes to help students improve their technical skills in software engineering.",
+      "author": {
+        "@type": "Organization",
+        "name": "CSE Technical Club",
+        "url": "https://sistktechnical.club/DailyTestPage.html"
+      }
+    }
+    </script>
+    
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTXGJF19GP"></script>
@@ -76,23 +95,23 @@
                 <ul class="navbar-list">
 
                     <li class="navbar-item">
-                        <a href="../index.html#home" class="navbar-link" data-nav-toggler>Home</a>
+                        <a href="./index.html#home" class="navbar-link" data-nav-toggler>Home</a>
                     </li>
 
                     <li class="navbar-item">
-                        <a href="../index.html#about" class="navbar-link" data-nav-toggler>About</a>
+                        <a href="./index.html#about" class="navbar-link" data-nav-toggler>About</a>
                     </li>
 
                     <li class="navbar-item">
-                        <a href="../index.html#courses" class="navbar-link" data-nav-toggler>Courses</a>
+                        <a href="./index.html#courses" class="navbar-link" data-nav-toggler>Courses</a>
                     </li>
 
                     <li class="navbar-item">
-                        <a href="../index.html#event" class="navbar-link" data-nav-toggler>Event</a>
+                        <a href="./index.html#event" class="navbar-link" data-nav-toggler>Event</a>
                     </li>
 
                     <li class="navbar-item">
-                        <a href="../Quizes.html" class="navbar-link" data-nav-toggler>Quizes</a>
+                        <a href="./index.html#Quizes" class="navbar-link" data-nav-toggler>Quizes</a>
                     </li>
 
                     <li class="navbar-item">
@@ -127,9 +146,9 @@
 
     <section class="section newsletter" aria-label="newsletter">
         <div class="container">
-            <h2 class="h2 section-title">ICS Test - 1</h2>
+            <h2 class="h2 section-title"></h2>
             <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSfCA85xF1ghisVGbjuOx25_soS6Uz02BbliNiGGkByVc866aQ/viewform"
+                src=""
                 width="100vh" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
     </section>
@@ -356,6 +375,29 @@
     - custom js link
   -->
     <script src="../script.js" defer></script>
+    <script>
+        function getUrlParameter(name) {
+          name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+          const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+          const results = regex.exec(location.search);
+          return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+      
+        function updatePageContent() {
+          const testName = getUrlParameter('testName');
+          const formURL = getUrlParameter('formURL');
+      
+          if (testName && formURL) {
+            document.querySelector('.h2.section-title').innerText = testName;
+            document.querySelector('iframe').src = formURL;
+          } else {
+            console.error('Missing URL parameters');
+          }
+        }
+      
+        document.addEventListener('DOMContentLoaded', updatePageContent);
+      </script>
+      
 
     <!-- 
     - ionicon link
